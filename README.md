@@ -2,4 +2,4 @@ Test README
 ----------
 
 This is a test.
-Hook test 2.
+Hook test 3.
