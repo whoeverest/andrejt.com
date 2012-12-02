@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Andrej T. - personal website</title>
-<link href="{{ url_for('static', filename="bootstrap.min.css") }}" rel="stylesheet" type="text/css">
+<link href="static/bootstrap.min.css" rel="stylesheet" type="text/css">
 <style>
 #main {
 	width: 600px;
@@ -9,17 +9,17 @@
 	margin-right: auto;
 }
 #pic {
-	width: 200px;
-	height: 200px;
-	float: right;
-	margin-left: 10px;
+	width: 240;
+	height: 360px;
+	float: left;
+	margin-right: 30px;
 }
 </style>
 </head>
 <body>
 <div id="main">
 	<h1>Hi. This is my website.</h1>
-	<img id="pic" src="{{ url_for('static', filename='andrej_t_picture2.jpg') }}"
+	<img id="pic" src="static/andrej_t_picture3.jpg">
 	<p>
 		My name is Andrej Trajchevski. I'm a programmer interested in stuff, currently working as a Python developer. You can drop me a line at <strong> andrejtrajchevski </strong> [at] the <strong>Google</strong> mail.
 	</p>
