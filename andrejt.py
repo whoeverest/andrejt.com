@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html")
 
-@app.route('/update', method=['POST'])
+@app.route('/update', methods=['POST'])
 def update():
 	call(['git', 'pull'])
 	return "Success."
