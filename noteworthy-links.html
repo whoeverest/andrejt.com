@@ -4,31 +4,78 @@
 <title>Noteworthy links - Andrej T.</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <style>
-body {
-	background: url('img/background.png');
-}
-a, a:visited {
-	color: #520052;
-	font-weight: 900;
-}
-#main {
-	max-width: 600px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border: 1px solid silver;
-	padding: 10px;
-	background: white;
-}
-ul {
-	list-style-type: none;
-}
-.link-domain {
-	color: silver;
-	margin-left: 5px;
-}
+	body {
+		background: url('img/background.png');
+	}
+	a, a:visited {
+		color: #520052;
+		font-weight: 900;
+	}
+	#main {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		border: 1px solid silver;
+		padding: 10px;
+		background: white;
+	}
+	ul {
+		list-style-type: none;
+	}
+	.link-domain {
+		color: silver;
+	}
 </style>
+
+<script type="text/javascript">
+	// Simple JavaScript Templating
+	// John Resig - http://ejohn.org/ - MIT Licensed
+	(function(){
+	  var cache = {};
+	  
+	  this.tmpl = function tmpl(str, data){
+	    // Figure out if we're getting a template, or if we need to
+	    // load the template - and be sure to cache the result.
+	    var fn = !/\W/.test(str) ?
+	      cache[str] = cache[str] ||
+	        tmpl(document.getElementById(str).innerHTML) :
+	      
+	      // Generate a reusable function that will serve as a template
+	      // generator (and which will be cached).
+	      new Function("obj",
+	        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+	        
+	        // Introduce the data as local variables using with(){}
+	        "with(obj){p.push('" +
+	        
+	        // Convert the template into pure JavaScript
+	        str
+	          .replace(/[\r\t\n]/g, " ")
+	          .split("<%").join("\t")
+	          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+	          .replace(/\t=(.*?)%>/g, "',$1,'")
+	          .split("\t").join("');")
+	          .split("%>").join("p.push('")
+	          .split("\r").join("\\'")
+	      + "');}return p.join('');");
+	    
+	    // Provide some basic currying to the user
+	    return data ? fn( data ) : fn;
+	  };
+	})();
+</script>
+
+<script type="text/html" id="links_template">
+	<% for (var i = 0; i < links.length; i++) { %>
+		<li class="link">
+			<a class="link-title" href="<%= links[i].href %>"><%= links[i].title %></a>
+			<span class="link-domain">(<%= links[i].domain %>)</span>
+			<p class="link-description"><%= links[i].description %></p>
+		</li>
+	<% } %>
+</script>
 
 <script type="text/javascript">
 
@@ -43,7 +90,32 @@ ul {
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+	db_links = [
+		{
+			title: "Bret Victor - Inventing on Principle",
+			href: "http://vimeo.com/36579366",
+			domain: "vimeo.com",
+			description: "Demonstration of innovative UI design; programming with constant feedback from the environment. Great talk."
+		},
+		{
+			title: "Richard Feynman - No Ordinary Genius",
+			href: "https://www.youtube.com/watch?v=Fzg1CU8t9nw",
+			domain: "youtube.com",
+			description: "Documentary about Richard Feynman."
+		},
+		{
+			title: "Ask HN: What were your naivetés in your twenties?",
+			href: "https://news.ycombinator.com/item?id=1474454",
+			domain: "news.ycombinator.com",
+			description: "Comment written by Daniel Markham on Hacker News."
+		},
+		{
+			title: "Doing",
+			href: "http://www.creativesomething.net/post/35780369376",
+			domain: "www.creativesomething.net",
+			description: "Blog post about creativity and the passion of doing."
+		},
+	]
 </script>
 
 </head>
@@ -51,28 +123,14 @@ ul {
 <div id="main">
 	<div id="right">
 	<h3 style="margin-left: 10px;">Noteworthy links</h3>
-	<ul id="links-wrapper">
-
-		<li class="link">
-			<a class="link-title" href="https://www.youtube.com/watch?v=Fzg1CU8t9nw">Richard Feynman - No Ordinary Genius</a>
-			<span class="link-domain">youtube.com</span>
-			<p class="link-description">Documentary about Richard Feynman.</p>
-		</li>
-
-		<li class="link">
-			<a class="link-title" href="https://news.ycombinator.com/item?id=1474454">Ask HN: What were your naivetés in your twenties?</a>
-			<span class="link-domain">news.ycombinator.com</span>
-			<p class="link-description">A comment written by Daniel Markham on Hacker News.</p>
-		</li>
-
-		<li class="link">
-			<a class="link-title" href="http://www.creativesomething.net/post/35780369376">Doing</a>
-			<span class="link-domain">www.creativesomething.net</span>
-			<p class="link-description">Blog post about creativity and the passion of doing.</p>
-		</li>
-
-	</ul>
+	
+	<ul id="links-wrapper"></ul>
+	
 	</div>
 </div>
 </body>
+<script type="text/javascript">
+	links_wrapper = document.getElementById('links-wrapper')
+	links_wrapper.innerHTML = tmpl('links_template', {links: db_links});
+</script>
 </html>
