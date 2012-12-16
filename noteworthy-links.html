@@ -27,6 +27,13 @@
 	.link-domain {
 		color: silver;
 	}
+	.link-permalink {
+		font-weight: 100;
+	}
+	:target {
+		border-left: 2px solid silver;
+		padding-left: 5px;
+	};
 </style>
 
 <script type="text/javascript">
@@ -69,27 +76,15 @@
 
 <script type="text/html" id="links_template">
 	<% for (var i = 0; i < links.length; i++) { %>
-		<li class="link">
+		<li id="<%= i %>"class="link">
 			<a class="link-title" href="<%= links[i].href %>"><%= links[i].title %></a>
 			<span class="link-domain">(<%= links[i].domain %>)</span>
-			<p class="link-description"><%= links[i].description %></p>
+			<p class="link-description"><%= links[i].description %>&nbsp;<a class="link-permalink" href="#<%= i %>">#</a></p>
 		</li>
 	<% } %>
 </script>
 
 <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37081923-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 	db_links = [
 		{
 			title: "Bret Victor - Inventing on Principle",
@@ -129,8 +124,25 @@
 	</div>
 </div>
 </body>
+
 <script type="text/javascript">
+	// Generate links and insert the into the page
 	links_wrapper = document.getElementById('links-wrapper')
 	links_wrapper.innerHTML = tmpl('links_template', {links: db_links});
 </script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37081923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+ </script>
+
 </html>
