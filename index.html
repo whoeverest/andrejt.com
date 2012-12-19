@@ -12,31 +12,34 @@ a, a:visited {
 	font-weight: 900;
 }
 #main {
-	max-width: 600px;
+	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: 1px solid silver;
-	padding: 10px 10px 10px 0;
+	padding: 20px 32px 32px 0;
 	background: white;
 }
 #right {
-	padding-left: 250px;
+	padding-left: 260px;
+}
+pre {
+	background: white;
 }
 #pic {
 	width: 240px;
 	height: 360px;
 }
-ul {
-	list-style-type: none;
-}
 #pic-wrapper {
 	width: 250px;
 	float: left;
 }
+ul {
+	list-style-type: none;
+}
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 	#pic-wrapper {
 		float: none;
 	}
@@ -75,14 +78,14 @@ ul {
 	</div>
 	<div id="right">
 	
-	<h1>Hi. My name is Andrej T.</h1>
+	<h2>Hi. My name is Andrej T.</h2>
 	
 	<p>
 		I'm a programmer interested in stuff, currently working as a Python developer. You can drop me a line at <strong> andrejtrajchevski </strong> [at] the <strong>Google</strong> mail.
 	</p>
 
 <!-- awful indentation, but this tag requires it. :/ -->
-<pre class="" onclick="StackOverflow()">
+<pre title="Wait, this would cause a..." onclick="StackOverflow()">
 function quickfix() { 
   return "quickfix upon a " + quickfix();
 }
