@@ -38,6 +38,18 @@ pre {
 ul {
 	list-style-type: none;
 }
+.social-wrapper {
+	position: relative;
+	height: 32px;
+	clear: right;
+}
+.social-icon {
+	height: 32px;
+	width: 32px;
+	float: left;
+	background: url('img/social_merged.png') no-repeat;
+	margin-right: 5px;
+}
 
 @media only screen and (max-width: 700px) {
 	#pic-wrapper {
@@ -93,9 +105,17 @@ function quickfix() {
 
 	<h3>On the social networks</h3>
 	<p>
-		<span><a href="http://www.linkedin.com/in/whoeverest"><img src="img/linkedin.png" /></a></span>
-		<span><a href="http://facebook.com/whoeverest"><img src="img/facebook.png" /></a></span>
-		<span><a href="http://twitter.com/whoeverest"><img src="img/twitter.png" /></a></span>
+		<div class="social-wrapper">
+			<a href="http://www.linkedin.com/in/whoeverest">
+				<div class="social-icon"></div>
+			</a>
+			<a href="http://facebook.com/whoeverest">
+				<div class="social-icon" style="background-position: -32px 0px"></div>
+			</a>
+			<a href="http://twitter.com/whoeverest">
+				<div class="social-icon" style="background-position: -64px 0px"></div>
+			</a>
+		</div>
 	</p>
 
 	<h3>Projects</h3>
