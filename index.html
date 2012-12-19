@@ -61,6 +61,10 @@ ul {
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
+  function StackOverflow() {
+  	document.location = "http://stackoverflow.com/users/1043611/andrej-t";
+  }
+
 </script>
 
 </head>
@@ -72,16 +76,25 @@ ul {
 	<div id="right">
 	
 	<h1>Hi. My name is Andrej T.</h1>
+	
 	<p>
 		I'm a programmer interested in stuff, currently working as a Python developer. You can drop me a line at <strong> andrejtrajchevski </strong> [at] the <strong>Google</strong> mail.
 	</p>
+
+<!-- awful indentation, but this tag requires it. :/ -->
+<pre onclick="StackOverflow()">
+function quickfix() { 
+  return "quickfix upon a " + quickfix();
+}
+</pre>
+
 	<h3>On the social networks</h3>
 	<p>
 		<span><a href="http://www.linkedin.com/in/whoeverest"><img src="img/linkedin.png" /></a></span>
 		<span><a href="http://facebook.com/whoeverest"><img src="img/facebook.png" /></a></span>
 		<span><a href="http://twitter.com/whoeverest"><img src="img/twitter.png" /></a></span>
 	</p>
-	
+
 	<h3>Projects</h3>
 	<p><a href="http://python-poezija.blogspot.com">Python poetry</a> - poetry generator blog, Markov chains, text is in macedonian.</p>
 	<p><a href="https://github.com/whoeverest/Synchronize">Synchronize</a> - Python script that synchronizes source files with data from a remote URL on each run.</p>
