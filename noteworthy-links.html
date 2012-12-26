@@ -79,10 +79,10 @@
 
 <script type="text/html" id="links_template">
 	<% for (var i = 0; i < links.length; i++) { %>
-		<li id="<%= i %>"class="link">
+		<li id="<%= db_links.length - i %>"class="link">
 			<a class="link-title" href="<%= links[i].href %>"><%= links[i].title %></a>
 			<span class="link-domain">(<%= links[i].domain %>)</span>
-			<p class="link-description"><%= links[i].description %>&nbsp;<a class="link-permalink" href="#<%= i %>">#</a></p>
+			<p class="link-description"><%= links[i].description %>&nbsp;<a class="link-permalink" href="#<%= db_links.length - i %>">#</a></p>
 		</li>
 	<% } %>
 </script>
